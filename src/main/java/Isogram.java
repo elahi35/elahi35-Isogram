@@ -1,3 +1,5 @@
+import java.util.HashSet;
+import java.util.Set;
 
 public class Isogram {
     /**
@@ -13,6 +15,19 @@ public class Isogram {
      * @return true if str is an isogram, false otherwise.
      */
     public boolean isIsogram(String str){
-        return false;
+         if (str == null || str.isEmpty()) {
+            return true; // An empty string or null is considered an isogram.
+        }
+
+        Set<Character> seenCharacters = new HashSet<>();
+        for (char c : str.toCharArray()) {
+            if (seenCharacters.contains(c)) {
+                return false; // If we've seen the character before, it's not an isogram.
+            }
+            seenCharacters.add(c);
+        }
+
+        return true; // If we haven't seen any duplicate characters, it's an isogram.
     }
+
 }
